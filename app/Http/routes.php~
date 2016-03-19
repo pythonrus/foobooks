@@ -1,0 +1,15 @@
+<?php
+
+
+Route::get('/', function () {
+    #return view('welcome');
+    return 'Hello, welcome to my Laravel application!';
+});
+
+Route::get('/books', function () {
+    return 'Show a list of all books';
+});
+
+Route::group(['middleware' => ['web']], function () {
+    //
+});
