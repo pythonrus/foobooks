@@ -4,7 +4,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', function () {
         #return view('welcome');
-        return 'Hello, welcome to my Laravel application!';
+        return view('welcome');
     });
 
     Route::get('/books', 'BookController@getIndex');
@@ -15,8 +15,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/practice', function() {
 
        $random = new Random();
-       return $random->getRandomString(8);
+       return $random->getRandomString(10);
 
     });
+
+    # Restrict certain routes to only be viewable in the local environments
+    if(App::environment('local')) {
+        Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    }
 
 });
