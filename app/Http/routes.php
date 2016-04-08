@@ -11,6 +11,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/book/create', 'BookController@getCreate'); #show the form
     Route::post('/book/create', 'BookController@postCreate'); #processing the form
     Route::get('/book/show/{title?}', 'BookController@getShow');
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
     Route::get('/practice', function() {
 
